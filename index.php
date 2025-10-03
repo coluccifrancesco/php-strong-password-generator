@@ -55,15 +55,16 @@
                 <div class="d-none d-lg-block col-1"></div>
                 
                 <div class="border rounded bg-primary my-2 col-12 col-lg-5 p-4">
+                    
                     <?php 
                     
                     // Recupero il parametro lunghezza password
                     $userChosenLength = $_GET['pwLength'];
                     
                     // Se non è settato, oppure è vuoto, ha la lunghezza minima
-                    if(!isset($userChosenLength) || $userChosenLength == '') {
-                        $userChosenLength = 8;
-                    }
+                    // if(!isset($userChosenLength) || $userChosenLength == '') {
+                    //     $userChosenLength = 8;
+                    // }
                     
                     // Associo il valore per la lungh. della password ad una 
                     // nuova variabile e converto in numero
@@ -75,16 +76,16 @@
                     $pwGotSpecial = $_GET['special'] ?? '';
 
                     // Debugging
-                    var_dump($pwLength);
-                    echo('<br>');
+                    // var_dump($pwLength);
+                    // echo('<br>');
                     
-                    var_dump($pwGotUpperCase);
-                    echo('<br>');
+                    // var_dump($pwGotUpperCase);
+                    // echo('<br>');
                     
-                    var_dump($pwGotNumbers);
-                    echo('<br>');
+                    // var_dump($pwGotNumbers);
+                    // echo('<br>');
                     
-                    var_dump($pwGotSpecial);
+                    // var_dump($pwGotSpecial);
                     
                     
                     // Funzione per generare la password
@@ -199,6 +200,12 @@
                         // La funzione ritorna una password randomizzata
                         return implode('',$pw);
                     };
+
+                    if (isset($userChosenLength)) {
+
+                        echo passwordGenerator( $pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpecial );
+                    }
+
                     ?>
                 
                 </div>
