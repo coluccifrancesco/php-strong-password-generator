@@ -92,6 +92,9 @@
 
                         // La password può contenere: MAIUSCOLE, 1234, !?!?
                         // ma DEVE contenere minuscole
+
+                        //  Creo un'array dove inserire i vari elementi della password 
+                        $pw = [];   
                         
                         // Creo delle variabili dove inserirò gli elementi da
                         // estrarre per la creazione della password
@@ -103,31 +106,39 @@
                         $numbers = '';
                         $special = '';
 
+                        // Variabile per gestire quantità di categorie aggiuntive se presenti
+                        $categoryToCount = 0;
+                        
+                        // Variabile per lunghezza password
+                        $haveToBeThereLength = $pwLength;
 
-                        // se i valori sono richiesti associo una stringa alla 
+                        // Variabile valore minimo di valori di categoria aggiuntiva da inserire
+                        $minLength = 1;
+
+                        // Se i valori sono richiesti associo una stringa alla 
                         // variabile con i relativi valori, 
                         // poi li aggiungo alla stringa dei valori obbligatori
                         if ($pwGotUpperCase == 'true') {
                             $uppercase = 'PLOIKMUJNYHBTGVRFCEDXWSZWAQ';
                             $haveToBeThere .= $uppercase;
+                            $categoryToCount += $minLength;
                         }
                         
                         if ($pwGotNumbers == 'true') {
                             $numbers = '0192837465';
                             $haveToBeThere .= $numbers;
+                            $categoryToCount += $minLength;
                         }
                         
                         if ($pwGotSpecial == 'true') {
                             $special = '!?$&@#';
                             $haveToBeThere .= $special;
-                        }
-
-                        // Creo delle variabili per gestire la quantità dei valori da inserire
-                        $haveToBeThereLength = $pwLength;
-                        $minLength = 1;
-
-                        //  Creo un'array dove inserire i vari elementi della password 
-                        $pw = [];                        
+                            $categoryToCount += $minLength;
+                        }                     
+                    
+                        // Variabile per verificare quanti caratteri mancano da inserire 
+                        // lunghezza richeista da utente - categorie richieste
+                        $spareCharacters = $haveToBeThereLength - $categoryToCount;
                     };
                     
                     ?>
