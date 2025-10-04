@@ -6,6 +6,11 @@ function passwordGenerator($pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpec
     // La password può contenere: MAIUSCOLE, 1234, !?!?
     // ma DEVE contenere minuscole
 
+    // Se non è settato, oppure è vuoto, ha la lunghezza minima
+    if($pwLength == 0) {
+            $pwLength = 8;
+    }
+
     //  Creo un'array dove inserire i vari elementi della password 
     $pw = [];
 
