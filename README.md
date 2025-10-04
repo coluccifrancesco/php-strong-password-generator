@@ -12,7 +12,7 @@ Scirivamo tutta la logica ed il layout in un unico file index.php
 ### Milestone 2 ✅
 Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file functions.php, che includeremo poi nella pagina principale.
 
-### Milestone 3 (BONUS) 
+### Milestone 3 (BONUS) ✅
 Invece di visualizzare la password generata nella stessa pagina (index.php), effettuiamo un redirect ad una seconda pagina (result.php), dedicata proprio a mostrare il risultato. Questa pagina riceverà la password che era stata generata tramite sessione e la mostrerà all’utente.
 
 ### Milestone 4 (BONUS) ✅

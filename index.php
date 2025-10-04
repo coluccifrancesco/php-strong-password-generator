@@ -1,8 +1,13 @@
 <?php 
 
+// Avvio sessione
+session_start();
+
+// Importo la funzione
 require './functions.php';
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,9 +98,14 @@ require './functions.php';
                     // var_dump($pwGotSpecial);
                     
 
+                    // Dichiaro la variabile password
+                    $pw;
+
                     if (isset($userChosenLength)) {
 
-                        echo passwordGenerator( $pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpecial );
+                        $pw = passwordGenerator( $pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpecial );
+                        $_SESSION['pwd'] = $pw;
+                        header('Location: ./result.php');
                     }
 
                     ?>
