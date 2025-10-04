@@ -29,7 +29,7 @@ require './functions.php';
             <div class="mx-5 my-5 row">
                 <div class="border rounded bg-primary my-2 col-12 col-lg-6 d-flex justify-content-center align-items-center ">
                     
-                    <!-- Form con scelta password  -->
+                    <!-- Form scelta password  -->
                     <form action="" method="GET" class="d-flex justify-content-between align-items-center p-4 w-100">
                         
                         <div class="d-flex flex-column justify-content-center align-items-start gap-3">
@@ -62,55 +62,38 @@ require './functions.php';
                 
                 </div>
                 
-                <div class="d-none d-lg-block col-1"></div>
+                    
+                <?php 
+                    
+                // Recupero il parametro lunghezza password
+                $userChosenLength = $_GET['pwLength'];
+                    
+                // Se non è settato, oppure è vuoto, ha la lunghezza minima
+                // if(!isset($userChosenLength) || $userChosenLength == '') {
+                //     $userChosenLength = 8;
+                // }
+                    
+                // Associo il valore per la lungh. della password ad una 
+                // nuova variabile e converto in numero
+                $pwLength = intval($userChosenLength);
+                    
+                // Recupero gli altri parametri dall'url
+                $pwGotUpperCase = $_GET['upper'] ?? '';
+                $pwGotNumbers = $_GET['num'] ?? '';
+                $pwGotSpecial = $_GET['special'] ?? '';
+
+                // Dichiaro la variabile password
+                $pw;
+
+                if (isset($userChosenLength)) {
+
+                    $pw = passwordGenerator( $pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpecial );
+                    $_SESSION['pwd'] = $pw;
+                    header('Location: ./result.php');
+                }
+
+                ?>
                 
-                <div class="border rounded bg-primary my-2 col-12 col-lg-5 p-4">
-                    
-                    <?php 
-                    
-                    // Recupero il parametro lunghezza password
-                    $userChosenLength = $_GET['pwLength'];
-                    
-                    // Se non è settato, oppure è vuoto, ha la lunghezza minima
-                    // if(!isset($userChosenLength) || $userChosenLength == '') {
-                    //     $userChosenLength = 8;
-                    // }
-                    
-                    // Associo il valore per la lungh. della password ad una 
-                    // nuova variabile e converto in numero
-                    $pwLength = intval($userChosenLength);
-                    
-                    // Recupero gli altri parametri dall'url
-                    $pwGotUpperCase = $_GET['upper'] ?? '';
-                    $pwGotNumbers = $_GET['num'] ?? '';
-                    $pwGotSpecial = $_GET['special'] ?? '';
-
-                    // Debugging
-                    // var_dump($pwLength);
-                    // echo('<br>');
-                    
-                    // var_dump($pwGotUpperCase);
-                    // echo('<br>');
-                    
-                    // var_dump($pwGotNumbers);
-                    // echo('<br>');
-                    
-                    // var_dump($pwGotSpecial);
-                    
-
-                    // Dichiaro la variabile password
-                    $pw;
-
-                    if (isset($userChosenLength)) {
-
-                        $pw = passwordGenerator( $pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpecial );
-                        $_SESSION['pwd'] = $pw;
-                        header('Location: ./result.php');
-                    }
-
-                    ?>
-                
-                </div>
             </div>
         </section>
     </main>    
