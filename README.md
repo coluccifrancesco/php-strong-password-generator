@@ -1,7 +1,7 @@
 # PHP Strong Password Generator
 
 ### Descrizione
-Creare una pagina che permetta ai nostri utenti di utilizzare il nostro generatore di password “sicure”.
+Creare una pagina che permetta ai nostri utenti di utilizzare il nostro generatore di password sicure.
 
 <br>
 
