@@ -8,7 +8,7 @@ function passwordGenerator($pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpec
 
     // Se non è settato, oppure è vuoto, ha la lunghezza minima
     if($pwLength == 0) {
-            $pwLength = 8;
+        $pwLength = 8;
     }
 
     //  Creo un'array dove inserire i vari elementi della password 
