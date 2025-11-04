@@ -73,8 +73,7 @@ require './functions.php';
             // Recupero il parametro lunghezza password
             $userChosenLength = $_GET['pwLength'];
                     
-            // Associo il valore per la lungh. della password ad una 
-            // nuova variabile e converto in numero
+            // Converto in numero la stringa $userChosenLength
             $pwLength = intval($userChosenLength);
                     
             // Recupero gli altri parametri dall'url
@@ -95,15 +94,7 @@ require './functions.php';
             ?>
         
         </section>
-    </main>    
-
-    <footer class="py-5">
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-        <div>.</div>
-    </footer>
+    </main>   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
