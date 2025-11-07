@@ -10,15 +10,15 @@ A simple yet powerful PHP-based password generator that creates secure and custo
 ![image](/esercizi/php-strong-password-generator/screenshots/home.png)
 
 ## Table of Contents  
-- [Overview](#🧩-overview)
-- [Features](#⚙️-features)
-- [Project Structure](#🧱-project-structure)
-- [How It Works](#🚀-how-it-works)
-- [Requirements](#💻-requirements)
-- [Installation](#🧰-installation)
-- [Author](#🧑‍💻-author)
-- [License](#📄-license)
-- [Future Improvements](#🌟-future-improvements)
+- [Overview](#overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [How It Works](#how-it-works)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Author](#author)
+- [License](#license)
+- [Future Improvements](#future-improvements)
 
 
 <br>
