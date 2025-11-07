@@ -1,120 +1,120 @@
 <?php
 
-// Funzione per generare la password
+// Function that generates a password
 function passwordGenerator($pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpecial): string {
 
-    // La password può contenere: MAIUSCOLE, 1234, !?!?
-    // ma DEVE contenere minuscole
+    // The password can include: uppercases, numbers and special characters
+    // but it MUST include lowercases
 
-    // Se non è settato, oppure è vuoto, ha la lunghezza minima
+    // Sets a default length if none is specified
     if($pwLength == 0) {
         $pwLength = 8;
     }
 
-    //  Creo un'array dove inserire i vari elementi della password 
+    // Initialises an array that stores the final password
     $pw = [];
 
-    // Creo delle variabili dove inserirò gli elementi da
-    // estrarre per la creazione della password
+    // Defines a variable (pool) containing characters available for the final password
     $haveToBeThere = 'q a z w s x e d c r f v t g b y h n u j m i k o l p';
 
-    // Creo variabili vuote che riempirò in caso di richiesta 
-    // da parte dell'utente
+    // Initialises varibles that stores the user-selected options (optionals)
     $optionals = [
         $uppercase = '',
         $numbers = '',
         $special = '',
     ];
 
-    // Variabile per gestire quantità di categorie aggiuntive se presenti
-    $categoryToCount = 0;
+    // Counts the number of additional character categories requested
+    $optionalsToCount = 0;
 
-    // Variabile per lunghezza password
+    // Stores the user's requested password length
     $userLengthRequest = $pwLength;
 
-    // Variabile valore minimo di valori di categoria aggiuntiva da inserire
+    // Defines the minimum number of characters to add for every selected optional category
     $minLength = 1;
 
-    // Se i valori sono richiesti associo una stringa alla 
-    // variabile con i relativi valori, 
-    // poi li aggiungo alla stringa dei valori obbligatori
+    // Checks which optional categories have been selected by the user.
+    // If an optional category is active, 
+    // it populates the corresponding variable with appropriate values,
+    // adds them to the final pool, 
+    // and increments the counter of selected categories
+    
     if ($pwGotUpperCase == 'on') {
         $optionals[0] = 'P L O I K M U J N Y H B T G V R F C E D X W S Z W A Q';
         $haveToBeThere .= $optionals[0];
-        $categoryToCount += $minLength;
+        $optionalsToCount += $minLength;
     }
 
     if ($pwGotNumbers == 'on') {
         $optionals[1] = '0 1 9 2 8 3 7 4 6 5';
         $haveToBeThere .= $optionals[1];
-        $categoryToCount += $minLength;
+        $optionalsToCount += $minLength;
     }
 
     if ($pwGotSpecial == 'on') {
         $optionals[2] = '! ? $ & @ #';
         $haveToBeThere .= $optionals[2];
-        $categoryToCount += $minLength;
+        $optionalsToCount += $minLength;
     }
 
-    // Variabile per verificare quanti caratteri mancano da inserire: 
-    // lunghezza richeista da utente - categorie richieste
-    $spareCharacters = $userLengthRequest - $categoryToCount;
+    // Calculates how many characters remain to reach the requested password length
+    // by subtracting the number of requested optionals 
+    $spareCharacters = $userLengthRequest - $optionalsToCount;
 
-    // Per ogni elemento che può essere aggiunto
+    // Iterates through each optional category
     foreach ($optionals as $optional) {
 
-        // Se l'elemento non è vuoto (e quindi è stato scelto)
+        // Verifies that the element is not empty
         if ($optional != '') {
 
-            //* Rendo la STRINGA dell'elemento UN nuovo ARRAY
+            // Converts the string of characters into an array
             $optionalArr = explode(' ', $optional);
 
-            // Verifico la lunghezza dell'array
+            // Calculates the array length
             $optionalLength = count($optionalArr);
 
-            // Scelgo un elemento random dell'array
+            // Selects a random element from the array
             $randomIndex = random_int(0, $optionalLength - 1);
 
-            // Aggiungo alla password finale
+            // Adds the selected character to the final password array
             $pw[] = $optionalArr[$randomIndex];
         }
     }
 
-    //* Rendo il POOL FINALE UN ARRAY
+    // Converts the final pool of characters into an array
     $finalPool = explode(' ', $haveToBeThere);
 
-    // Trovo la lunghezza del pool finale
-    $finalPoolLenght = count($finalPool);
+    // Calculates the length of the final pool
+    $finalPoolLength = count($finalPool);
 
-    // Per ogni carattere rimanente della password, 
-    // tolti quelli obbligatori (1 per categoria)
+    // Fills the password with the remaining characters, 
+    // until the user's requested length is reached
     for ($i = 1; $i <= $spareCharacters; $i++) {
 
-        // scelgo un carattere random dal pool finale
-        $randomIndex = random_int(0, $finalPoolLenght - 1);
+        // Selects a random element from the final pool
+        $randomIndex = random_int(0, $finalPoolLength - 1);
 
-        // Aggiungo quel carattere random all'array finale
+        // Adds the selected character to the password array
         $pw[] = $finalPool[$randomIndex];
     }
 
-    // Randomizzo la password con un algoritmo Fisher Yates
+    // Applies the Fisher-Yates shuffle algorithm to ensure randomness
     for ($i = 0; $i < $userLengthRequest - 1; $i++) {
 
-        // Creo un int $j che ha un valore compreso tra
-        // 0 e la lunghezza della password
+        // Defines an integer $j with a random value between 0 and the requested password length
         $j = random_int(0, $pwLength - 1);
 
-        // Salvo l'elemento in posizione $i di $pw
+        // Temporarily stores the value at position $i
         $tmp = $pw[$i];
 
-        // Scambio l'elemento in posizione $i con il nuovo valore
+        // Exchanges the value at position $i with the one at the random position
         $pw[$i] = $pw[$j];
 
-        // Il promo valore lo inserirsco nella posizione scambiata
+        // Restores the original value at the random position
         $pw[$j] = $tmp;
     }
 
-    // La funzione ritorna una password randomizzata
+    // Returns the password as a single concatenated string
     return implode('', $pw);
 }
 
