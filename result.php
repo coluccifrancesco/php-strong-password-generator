@@ -2,6 +2,7 @@
 
 session_start();
 
+// taking the $pw as a global variable
 $pw = $_SESSION['pwd'];
 
 ?>
@@ -18,7 +19,7 @@ $pw = $_SESSION['pwd'];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Edu+TAS+Beginner:wght@400..700&family=Fugaz+One&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Racing+Sans+One&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Secure Password</title>
+    <title>Safe Password Generator</title>
 </head>
 
 <body class="bg-body">
@@ -28,21 +29,24 @@ $pw = $_SESSION['pwd'];
             
             <div class="form-container p-5">
                 <h1>Your password:</h1>
-                <h3 class="mt-3" id="generatedPassword"><?php echo $pw; ?></h3>
+
+                <!-- Showing the pw -->
+                <div class="mt-3 p-3 pw-container">
+                    <h2 class="mb-0" id="generatedPassword"><?php echo $pw; ?></h2>
+                </div>
             </div>
             
             <form class="d-flex justify-content-between align-items-center gap-4" action="" method="GET">
                     
-                <!-- Tornare alla home -->
+                <!-- Back home btn -->
                 <input value="Generate again" name="newPw" type="submit"></input>
     
-                <!-- Copiare la password -->
+                <!-- Copy to clipboard btn -->
                 <button id="copy-pw-button"><i class="fa-regular fa-copy"></i></button>
                     
                 <?php 
                 
                 $newPw = $_GET['newPw'];
-                $copyPw = $_GET['copyPw'];
     
                 if($newPw != ''){
                     header('Location: ./index.php');
@@ -54,17 +58,6 @@ $pw = $_SESSION['pwd'];
         </section>
         
     </main>
-    
-    <footer class="py-5">
-        <div class="py-5">.</div>
-        <div class="py-5">.</div>
-        <div class="py-5">.</div>
-        <div class="py-5">.</div>
-        <div class="py-5">.</div>
-        <div class="py-5">.</div>
-    </footer>
-
-
 
     <script>
         
@@ -72,19 +65,19 @@ $pw = $_SESSION['pwd'];
 
         copyPwBtn.addEventListener('click', copyToClipboard);
 
-        // Funzione per copiare la password generata
+        // Function to copy the generated pw
         function copyToClipboard(event){
             
             event.preventDefault();
 
-            // Prendo il testo
+            // Get the string
             const generatedPassword = document.getElementById('generatedPassword').textContent;
 
-            // Copio il testo
+            // Coping the string
             navigator.clipboard.writeText(generatedPassword);
             
-            // Verifico che la password sia copiata
-            console.log('Password Copiata!');
+            // Password is copied
+            console.log('Password copied!');
         }
     
     </script>
