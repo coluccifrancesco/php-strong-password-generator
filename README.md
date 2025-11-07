@@ -1,19 +1,192 @@
-# PHP Strong Password Generator
+# 🔐 PHP Strong Password Generator
 
-### Descrizione
-Creare una pagina che permetta ai nostri utenti di utilizzare il nostro generatore di password sicure.
+
+A simple yet powerful PHP-based password generator that creates secure and customizable passwords based on user-defined criteria.
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![PHP](https://img.shields.io/badge/PHP-8.1%2B-blue)
+![Status](https://img.shields.io/badge/status-stable-success)
+
+![image](/esercizi/php-strong-password-generator/screenshots/home.png)
+
+## Table of Contents  
+- [Overview](#🧩-overview)
+- [Features](#⚙️-features)
+- [Project Structure](#🧱-project-structure)
+- [How It Works](#🚀-how-it-works)
+- [Requirements](#💻-requirements)
+- [Installation](#🧰-installation)
+- [Author](#🧑‍💻-author)
+- [License](#📄-license)
+- [Future Improvements](#🌟-future-improvements)
+
 
 <br>
 
-### Milestone 1 ✅
-Creare un form che invii in GET la lunghezza desiderata della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere minuscole, maiuscole, numeri e/o simboli) della lunghezza specificata, da restituire all’utente.
-Scirivamo tutta la logica ed il layout in un unico file index.php
+## 🧩 Overview
 
-### Milestone 2 ✅
-Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file functions.php, che includeremo poi nella pagina principale.
+**PHP Strong Password Generator** allows users to generate secure and fully customizable passwords directly from a web interface.  
+Users can define:
+- Desired password length  
+- Inclusion of uppercase letters  
+- Inclusion of numbers  
+- Inclusion of special characters 
 
-### Milestone 3 (BONUS) ✅
-Invece di visualizzare la password generata nella stessa pagina (index.php), effettuiamo un redirect ad una seconda pagina (result.php), dedicata proprio a mostrare il risultato. Questa pagina riceverà la password che era stata generata tramite sessione e la mostrerà all’utente.
+Passwords are generated using a custom algorithm and displayed on a dedicated results page for a clean user experience.
 
-### Milestone 4 (BONUS) ✅
-Gestire ulteriori parametri nel form per le password, dando la possibilità all’utente di specificare quali set di caratteri possono essere ammessi nella password da generare, tra lettere maiuscole, lettere minuscole, numeri e simboli.
+<br>
+
+## ⚙️ Features
+
+✅ Generates passwords with customizable options  
+✅ Uses a Fisher–Yates shuffle algorithm for extra randomness  
+✅ Modular structure (`functions.php`, `index.php`, `result.php`)  
+✅ Securely stores data in session  
+✅ Lightweight, dependency-free PHP project  
+
+<br>
+
+## 🧱 Project Structure
+php-strong-password-generator/ <br>
+| <br>
+├── screenshots (README screenshots) <br>
+├── README.md (Project documentation) <br>
+├── functions.php (Contains the password generation logic) <br>
+├── index.php (Main page with password generation form) <br>
+├── result.php (Displays the generated password) <br>
+└── style.css (File for styling the webapp) <br>
+
+<br>
+
+## 🧮 How It Works
+
+1. The user selects password length and optional character sets.
+
+
+![image](/esercizi/php-strong-password-generator/screenshots/example.png)
+
+
+2. The data is sent via **GET** to the backend.
+
+```php
+index.php 
+
+// Stores user's password length request
+$userChosenLength = $_GET['pwLength'] ?? null;
+        
+// Converting the string into a number
+if($userChosenLength != null){
+    
+    $pwLength = intval($userChosenLength);
+}
+
+// Storing user preferences
+$pwGotUpperCase = $_GET['upper'] ?? '';
+$pwGotNumbers = $_GET['num'] ?? '';
+$pwGotSpecial = $_GET['special'] ?? '';
+```
+
+<br>
+
+3. `passwordGenerator` processes the request and generates the password:
+   - Always includes lowercase letters.
+   - Optionally includes uppercase letters, numbers, and/or special characters.
+   - Randomizes the result using the **Fisher–Yates algorithm**.
+
+4. The generated password is stored in a **PHP session**.
+
+<br>
+
+```php
+index.php 
+
+// When the preferences are set
+if (isset($userChosenLength) && $pwLength >= 8 && $pwLength <= 24) {
+    
+    // Stores the generated password after passing the requests
+    $pw = passwordGenerator( $pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpecial );
+    
+    // Password is sent to the result page
+    $_SESSION['pwd'] = $pw;
+
+    // User is redirected
+    header('Location: ./result.php');
+
+    exit;
+}
+```
+
+<br>
+
+5. The user is redirected to `result.php` to view the password.
+
+<br>
+
+![image](/esercizi/php-strong-password-generator/screenshots/result.png)
+
+6. The user can generate a new password, and can copy the generated one for easier use.
+
+<br>
+
+## 💻 Requirements
+
+PHP 8.1+
+
+Local server (e.g., XAMPP, MAMP, Laragon, or PHP built-in server)
+
+<br>
+
+## 🧰 Installation
+
+1. Clone the repository:
+
+```
+git clone https://github.com/coluccifrancesco/php-strong-password-generator.git
+```
+
+2. Move into the project folder:
+
+```
+cd php-strong-password-generator
+```
+
+3. Run a local PHP server:
+
+```
+php -S localhost:8000
+```
+
+4. Open your browser and visit:
+
+```
+http://localhost:8000
+```
+
+<br>
+
+## 🧑‍💻 Author
+
+Francesco Colucci <br>
+📍 Italy <br>
+[💼 GitHub Profile](https://github.com/coluccifrancesco) <br>
+[👨🏻‍💼 LinkedIn Profile](https://www.linkedin.com/in/francesco-colucci-589414290/) <br>
+🖋️ Student & Web Developer passionate about PHP, security, and clean UI design.
+
+<br>
+
+## 📄 License
+
+This project is released under the MIT License.
+You are free to use, modify, and distribute it, provided the original author is credited.
+
+<br>
+
+## 🌟 Future Improvements
+
+- Password strength indicator (frontend) 💪🏻
+
+- Implement API endpoint for external password requests 💻
+
+- Add dark/light theme toggle 🌗
+ 
+- Docker container for local development 🐋
