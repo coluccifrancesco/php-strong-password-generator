@@ -7,7 +7,7 @@ A simple yet powerful PHP-based password generator that creates secure and custo
 ![PHP](https://img.shields.io/badge/PHP-8.1%2B-blue)
 ![Status](https://img.shields.io/badge/status-stable-success)
 
-![image](/php-strong-password-generator/screenshots/home.png)
+![image](/screenshots/home.png)
 
 ## Table of Contents  
 - [Overview](#overview)
@@ -74,7 +74,7 @@ php-strong-password-generator/ <br>
 1. The user selects password length and optional character sets.
 
 
-![image](/php-strong-password-generator/screenshots/example.png)
+![image](/screenshots/example.png)
 
 
 2. The data is sent via **GET** to the backend.
@@ -133,7 +133,7 @@ if (isset($userChosenLength) && $pwLength >= 8 && $pwLength <= 24) {
 
 <br>
 
-![image](/php-strong-password-generator/screenshots/result.png)
+![image](/screenshots/result.png)
 
 6. The user can generate a new password, and can copy the generated one for easier use.
 
