@@ -161,7 +161,7 @@ input[type='number']{
 }
 
 .form-container {
-    max-width: 1000px;
+    max-width: 900px;
     background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.078);
