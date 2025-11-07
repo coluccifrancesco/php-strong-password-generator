@@ -221,3 +221,15 @@ input[name="newPw"]{
         transition: all 0.4s;
     }
 }
+   
+#alertText{
+    transition: opacity 2s ease-out;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: 4px solid var(--text-color);
+    border-radius: 10px;
+}
+
+.hide{
+    opacity: 0;
+}

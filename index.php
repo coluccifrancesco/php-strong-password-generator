@@ -81,17 +81,17 @@ if (isset($userChosenLength) && $pwLength >= 8 && $pwLength <= 24) {
                                 </div>
                             </div>
                             
-                            <label for="uppercases" class="label label-toggle my-4 p-3 d-flex justify-content-between align-items-center">
+                            <label for="uppercases" class="label label-toggle my-4 px-3 py-2 d-flex justify-content-between align-items-center">
                                 <span>Uppercase</span>
                                 <input type="checkbox" name="upper" id="uppercases" class="ms-3">
                             </label>
                             
-                            <label for="numbers" class="label label-toggle my-4 p-3 d-flex justify-content-between align-items-center">
+                            <label for="numbers" class="label label-toggle my-4 px-3 py-2 d-flex justify-content-between align-items-center">
                                 <span>Numbers</span>
                                 <input type="checkbox" name="num" id="numbers" class="ms-3">
                             </label>
                             
-                            <label for="characters" class="label label-toggle my-4 p-3 d-flex justify-content-between align-items-center">
+                            <label for="characters" class="label label-toggle my-4 px-3 py-2 d-flex justify-content-between align-items-center">
                                 <span>Special characters</span>
                                 <input type="checkbox" name="special" id="characters" class="ms-3">
                             </label>
