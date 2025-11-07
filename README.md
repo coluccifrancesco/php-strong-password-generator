@@ -24,7 +24,7 @@ A simple yet powerful PHP-based password generator that creates secure and custo
 
 <br>
 
-## 🧩 Overview
+## Overview 🧩 
 
 **PHP Strong Password Generator** allows users to generate secure and fully customizable passwords directly from a web interface.  
 Users can define:
@@ -39,7 +39,7 @@ This project was built as an educational exercise to practice PHP logic separati
 
 <br>
 
-## 🧠 Tech Stack
+## Tech Stack 🧠 
 - **Language:** PHP 8.1+
 - **Frontend:** HTML5, CSS3
 - **Server:** PHP Built-in / Apache
@@ -47,7 +47,7 @@ This project was built as an educational exercise to practice PHP logic separati
 
 <br>
 
-## ⚙️ Features
+## Features ⚙️ 
 
 ✅ Generates passwords with customizable options  
 ✅ Uses a Fisher–Yates shuffle algorithm for extra randomness  
@@ -57,7 +57,7 @@ This project was built as an educational exercise to practice PHP logic separati
 
 <br>
 
-## 🧱 Project Structure
+## Project Structure 🧱 
 php-strong-password-generator/ <br>
 | <br>
 ├── screenshots (README screenshots) <br>
@@ -69,7 +69,7 @@ php-strong-password-generator/ <br>
 
 <br>
 
-## 🧮 How It Works
+## How It Works 🧮 
 
 1. The user selects password length and optional character sets.
 
@@ -139,7 +139,7 @@ if (isset($userChosenLength) && $pwLength >= 8 && $pwLength <= 24) {
 
 <br>
 
-## 🔒 Security Considerations
+## Security Considerations 🔒 
 - The password generation happens entirely on the server, ensuring no client-side exposure.
 - Passwords are not logged or stored permanently — only kept in session during runtime.
 - For production-grade implementations, consider adding:
@@ -149,7 +149,7 @@ if (isset($userChosenLength) && $pwLength >= 8 && $pwLength <= 24) {
 
 <br>
 
-## 💻 Requirements
+## Requirements 💻 
 
 PHP 8.1+
 
@@ -157,7 +157,7 @@ Local server (e.g., XAMPP, MAMP, Laragon, or PHP built-in server)
 
 <br>
 
-## 🧰 Installation
+## Installation 🧰 
 
 1. Clone the repository:
 
@@ -185,7 +185,7 @@ http://localhost:8000
 
 <br>
 
-## 🧑‍💻 Author
+## Author 🧑‍💻 
 
 Francesco Colucci <br>
 📍 Italy <br>
@@ -195,14 +195,14 @@ Francesco Colucci <br>
 
 <br>
 
-## 📄 License
+## License 📄 
 
 This project is released under the MIT License.
 You are free to use, modify, and distribute it, provided the original author is credited.
 
 <br>
 
-## 🌟 Future Improvements
+## Future Improvements 🌟 
 
 - Password strength indicator (frontend) 💪🏻
 
