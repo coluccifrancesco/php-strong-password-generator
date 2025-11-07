@@ -7,19 +7,20 @@ A simple yet powerful PHP-based password generator that creates secure and custo
 ![PHP](https://img.shields.io/badge/PHP-8.1%2B-blue)
 ![Status](https://img.shields.io/badge/status-stable-success)
 
-![image](/esercizi/php-strong-password-generator/screenshots/home.png)
+![image](/php-strong-password-generator/screenshots/home.png)
 
 ## Table of Contents  
 - [Overview](#overview)
+- [Tech Stack](#tech-stack)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
+- [Security Considerations](#security-considerations)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Author](#author)
 - [License](#license)
 - [Future Improvements](#future-improvements)
-
 
 <br>
 
@@ -33,6 +34,16 @@ Users can define:
 - Inclusion of special characters 
 
 Passwords are generated using a custom algorithm and displayed on a dedicated results page for a clean user experience.
+
+This project was built as an educational exercise to practice PHP logic separation, session handling, and UI integration.
+
+<br>
+
+## 🧠 Tech Stack
+- **Language:** PHP 8.1+
+- **Frontend:** HTML5, CSS3
+- **Server:** PHP Built-in / Apache
+- **Data handling:** PHP Sessions
 
 <br>
 
@@ -63,7 +74,7 @@ php-strong-password-generator/ <br>
 1. The user selects password length and optional character sets.
 
 
-![image](/esercizi/php-strong-password-generator/screenshots/example.png)
+![image](/php-strong-password-generator/screenshots/example.png)
 
 
 2. The data is sent via **GET** to the backend.
@@ -122,9 +133,19 @@ if (isset($userChosenLength) && $pwLength >= 8 && $pwLength <= 24) {
 
 <br>
 
-![image](/esercizi/php-strong-password-generator/screenshots/result.png)
+![image](/php-strong-password-generator/screenshots/result.png)
 
 6. The user can generate a new password, and can copy the generated one for easier use.
+
+<br>
+
+## 🔒 Security Considerations
+- The password generation happens entirely on the server, ensuring no client-side exposure.
+- Passwords are not logged or stored permanently — only kept in session during runtime.
+- For production-grade implementations, consider adding:
+  - HTTPS enforcement
+  - CSRF protection on form submission
+  - Rate limiting for API endpoints
 
 <br>
 
