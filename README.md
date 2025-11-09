@@ -80,7 +80,7 @@ php-strong-password-generator/ <br>
 2. The data is sent via **GET** to the backend.
 
 ```php
-index.php 
+// index.php 
 
 // Stores user's password length request
 $userChosenLength = $_GET['pwLength'] ?? null;
@@ -109,7 +109,7 @@ $pwGotSpecial = $_GET['special'] ?? '';
 <br>
 
 ```php
-index.php 
+// index.php 
 
 // When the preferences are set
 if (isset($userChosenLength) && $pwLength >= 8 && $pwLength <= 24) {
