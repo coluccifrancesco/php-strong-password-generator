@@ -59,8 +59,8 @@ This project was built as an educational exercise to practice PHP logic separati
 
 ## Project Structure 🧱 
 php-strong-password-generator/ <br>
-├── screenshots (README screenshots folder) <br>
 ├── js (JavaScript files folder) <br>
+├── screenshots (README screenshots folder) <br>
 ├── README.md (Project documentation) <br>
 ├── functions.php (Contains the password generation logic) <br>
 ├── index.php (Main page with password generation form) <br>
