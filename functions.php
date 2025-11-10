@@ -17,7 +17,7 @@ function passwordGenerator($pwLength, $pwGotUpperCase, $pwGotNumbers, $pwGotSpec
     // Defines a variable (pool) containing characters available for the final password
     $haveToBeThere = 'q a z w s x e d c r f v t g b y h n u j m i k o l p';
 
-    // Initialises varibles that stores the user-selected options (optionals)
+    // Initialises varaibles that stores the user-selected options (optionals)
     $optionals = [
         $uppercase = '',
         $numbers = '',
